@@ -23,6 +23,13 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
+CORS(app)
+
+@app.route('/api/points', methods=['POST'])
+def points():
+    data = request.get_json()
+    user = data.get('user')
+    return jsonify({'message': f'{user} earned 33 points!'})
 
 # Connect MongoDB
 client = MongoClient(os.getenv("MONGO_URI"))
@@ -39,6 +46,8 @@ helpers_collection = db["helpers"]
 ADMIN_USER = os.getenv("ADMIN_USER")
 ADMIN_PASS = os.getenv("ADMIN_PASS")
 
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 @app.route("/")
 def index():
@@ -400,6 +409,7 @@ def add_member():
         return redirect(url_for("members"))
 
     return render_template("add_members.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
