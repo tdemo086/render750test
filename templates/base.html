@@ -73,6 +73,26 @@
       menu.style.width = "250px";
     }
   }
+
+function sendPoints() {
+  fetch("https://your-backend-service-name.onrender.com/api/points", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ user: "Shahriar" })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+}
+
+<button onclick="sendPoints()">Get 33 Points</button>
+
 </script>
 </body>
 </html>
