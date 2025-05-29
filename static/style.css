@@ -1,0 +1,171 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+}
+
+.footer {
+  text-align: center;
+  padding: 16px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ccc;
+  border-top: 1px solid #333;
+  margin-top: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer .teslatech {
+  color: #A6FF00; /* soft energetic green */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+
+/* Canvases */
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Navigation Bar */
+.nav {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.logo {
+  height: 50px;
+  border-radius: 3%;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 20px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00ffe7;
+}
+
+.menu-icon {
+  align-content: right;
+  display: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Side Menu */
+.side-menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 999;
+}
+
+.side-menu a {
+  padding: 10px 30px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+  display: block;
+  transition: 0.2s;
+}
+
+.side-menu a:hover {
+  background-color: #00ffe7;
+  color: #111;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 36px;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+
+/* Content Section */
+.content {
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Periodic Tiles */
+.floating-tiles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.tile {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 4px 8px;
+  color: #0ff;
+  font-size: 0.75rem;
+  text-align: center;
+  animation: floatTile 20s linear infinite;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes floatTile {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}

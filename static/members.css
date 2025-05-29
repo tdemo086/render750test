@@ -1,0 +1,109 @@
+
+
+/* Page Title & Tagline */
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 4px;
+  color: #00bcd4;
+  font-weight: 700;
+}
+
+p[style*="italic"] {
+  font-style: italic;
+  color: #6a6a6a;
+  margin-bottom: 30px;
+}
+
+/* Section Titles */
+.member-section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #26c6da;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Containers for members */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+/* Member Cards */
+.card {
+  background: rgba(20, 20, 20, 0.7);
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 188, 212, 0.3);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px 15px;
+  text-align: center;
+  color: #eee;
+  user-select: none;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 25px rgba(0, 188, 212, 0.7);
+}
+
+/* Member Image */
+.card img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #00bcd4;
+}
+
+/* Member Name */
+.card h3 {
+  margin: 8px 0 5px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00acc1;
+}
+
+/* Qualification */
+.card p {
+  font-size: 1rem;
+  color: #9fc9d9;
+  margin-bottom: 10px;
+}
+
+/* Contact Info (Initially Hidden) */
+.contact {
+  display: none;
+  font-size: 0.9rem;
+  color: #00e5ff;
+  margin-top: 8px;
+  background: rgba(0, 188, 212, 0.15);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .member-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .card img {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .container {
+    gap: 16px;
+  }
+}

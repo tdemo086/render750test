@@ -1,0 +1,86 @@
+/* Wrapper for the whole create playlist section */
+.create-playlist-wrapper {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
+}
+
+/* Headings */
+.create-playlist-wrapper h2 {
+    text-align: center;
+    color: #00ffd5;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form and inputs */
+.create-playlist-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.create-playlist-wrapper input[type="text"],
+.create-playlist-wrapper input[type="url"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    outline: 1px solid #00ffd5;
+    transition: outline 0.3s;
+}
+
+.create-playlist-wrapper input:focus {
+    outline: 2px solid #18c27e;
+}
+
+/* Buttons */
+.create-playlist-wrapper button {
+    padding: 10px 16px;
+    background: linear-gradient(to right, #21d1b4, #1db86f);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.create-playlist-wrapper button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 255, 200, 0.3);
+}
+
+.create-playlist-wrapper button[type="button"] {
+    background: #222;
+    color: #00ffd5;
+    border: 1px solid #24caaf;
+}
+
+.create-playlist-wrapper button[type="button"]:hover {
+    background: #111;
+}
+
+/* Each video input group */
+.create-playlist-wrapper .video-input {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .create-playlist-wrapper {
+        padding: 1.5rem;
+    }
+
+    .create-playlist-wrapper input {
+        font-size: 1rem;
+    }
+}

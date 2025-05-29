@@ -1,0 +1,92 @@
+/* Glassy Container */
+.oxychem-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  animation: fadeInUp 0.6s ease-in-out;
+  color: #e0f7fa;
+}
+
+/* Header Styling */
+.oxychem-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  background-clip: text; 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+}
+
+/* Wrapper for all cards */
+.notices-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Each Notice Card */
+.notice-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 5px solid #00e5ff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.4s ease-in-out;
+}
+
+.notice-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 229, 255, 0.3);
+}
+
+/* Text inside notice */
+.notice-card p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #e0f7fa;
+  line-height: 1.6;
+}
+
+/* No notice fallback */
+.no-notice {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ccc;
+  padding: 20px;
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .oxychem-container {
+    padding: 20px;
+  }
+
+  .oxychem-container h1 {
+    font-size: 2rem;
+  }
+
+  .notice-card p {
+    font-size: 1rem;
+  }
+}

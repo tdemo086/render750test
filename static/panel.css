@@ -1,0 +1,140 @@
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #00ffe7;
+}
+
+/* Label Styles */
+label {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  display: inline-block;
+  color: #00ffe7;
+}
+
+/* Select Dropdown */
+#uploadType {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 14px;
+  background-color: #1c2a36;
+  color: #ffffff;
+  border: 1px solid #00ffe7;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#uploadType:focus {
+  outline: none;
+  border-color: #00b8a4;
+  box-shadow: 0 0 8px #00ffe7;
+}
+
+/* Forms */
+form {
+  background-color: #161b22;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 255, 231, 0.1);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="file"],
+select {
+  width: 90%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  background-color: #0d1117;
+  color: #ffffff;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+input:focus {
+  border-color: #00ffe7;
+  outline: none;
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  background-color: #00ffe7;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #00b8a4;
+}
+
+/* Question Blocks */
+.question-block {
+  background-color: #0f141a;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+/* Logout */
+.logout-btn {
+  text-align: center;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #ff4c4c;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  #uploadType {
+    max-width: 100%;
+  }
+
+  form {
+    padding: 10px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 0.8rem;
+  }
+
+  .question-block {
+    padding: 8px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

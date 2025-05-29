@@ -1,0 +1,88 @@
+/* Centering wrapper, assumes this div wraps your .login-container */
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Adjust as needed, near full viewport height */
+  padding: 20px;
+}
+
+/* Login container */
+.login-container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+  width: 350px;
+  max-width: 100%;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Title */
+.login-container h2 {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00ffe7;
+}
+
+/* Inputs */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 90%;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 8px;
+  background-color: #2c2c40;
+  color: #fff;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+  outline: none;
+  background-color: #3a3a57;
+}
+
+/* Submit button */
+.login-container button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background-color: #6a5acd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #7b68ee;
+  box-shadow: 0 0 12px #7b68ee;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .login-container {
+    padding: 30px 20px;
+    width: 100%;
+  }
+
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-container input[type="text"],
+  .login-container input[type="password"],
+  .login-container button {
+    font-size: 14px;
+    padding: 10px 10px;
+  }
+}

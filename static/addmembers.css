@@ -1,0 +1,75 @@
+
+
+/* Page Title */
+h1 {
+  color: #00bcd4;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Form Container */
+.form-container {
+  max-width: 450px;
+  margin: 0 auto;
+  background: rgba(20, 20, 20, 0.85);
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #00acc1;
+}
+
+/* Inputs and Select */
+input[type="text"],
+input[type="url"],
+select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #222;
+  color: #eee;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+select:focus {
+  outline: none;
+  background-color: #333;
+  box-shadow: 0 0 5px #00bcd4;
+}
+
+/* Button */
+button[type="submit"] {
+  background-color: #00bcd4;
+  color: #121212;
+  font-weight: 700;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0097a7;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .form-container {
+    padding: 20px;
+    max-width: 100%;
+  }
+}

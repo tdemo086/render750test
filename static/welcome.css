@@ -1,0 +1,153 @@
+/* Base container styling */
+.welcome-page {
+  max-width: 900px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  color: #e0f7fa;
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+/* Title */
+.welcome-title {
+  text-align: center;
+  font-size: 2.8rem;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 25px;
+}
+
+/* Tagline */
+.welcome-tagline {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #b2ebf2;
+  margin-bottom: 40px;
+}
+
+/* Sections */
+.founder-section, .mission-section, .cta-section, .about-founder {
+  margin-bottom: 40px;
+}
+
+/* Section headings */
+.founder-section h2,
+.mission-section h2,
+.about-founder h2 {
+  font-size: 1.6rem;
+  color: #4dd0e1;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-founder h3 {
+  font-size: 1.3rem;
+  margin-top: 25px;
+  color: #4fc3f7;
+}
+
+/* Paragraphs */
+.welcome-page p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Lists */
+.mission-section ul,
+.about-founder ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.mission-section li,
+.about-founder li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+}
+
+.mission-section li::before,
+.about-founder li::before {
+  content: "\f058"; /* fa-check-circle or fa-star */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: #69f0ae;
+}
+
+/* CTA Button */
+.join-button {
+  display: inline-block;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 114, 255, 0.5);
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin: auto;
+}
+
+.join-button:hover {
+  background: linear-gradient(45deg, #0072ff, #00c6ff);
+  transform: scale(1.05);
+}
+
+/* CTA Note */
+.cta-section p {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: #f0f0f0;
+  margin: auto;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .welcome-page {
+    padding: 25px;
+  }
+
+  .welcome-title {
+    font-size: 2.2rem;
+  }
+
+  .welcome-tagline {
+    font-size: 1rem;
+  }
+
+  .join-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .mission-section li,
+  .about-founder li {
+    font-size: 0.95rem;
+  }
+}

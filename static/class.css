@@ -1,0 +1,54 @@
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px 10px;
+  max-width: 1200px;
+  margin-right: auto;
+  margin: 0 auto;
+}
+
+.video-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  color: #00ffe7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.video-card:hover {
+  transform: scale(1.05);
+}
+
+.video-card h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  color: #00ffe7;
+  margin: 10px 0;
+}
+
+.video-card iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Make the iframe smaller inside the square card if needed */
+@media (max-width: 600px) {
+  .video-card {
+    aspect-ratio: 1 / 1;
+  }
+  .video-card h3 {
+    font-size: 0.9rem;
+  }
+}

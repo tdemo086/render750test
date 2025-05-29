@@ -1,0 +1,125 @@
+/* Container for the admin notice form */
+.notice-admin-page {
+  max-width: 700px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  color: #e0f7fa;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+/* Heading */
+.notice-admin-page h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #00e5ff, #0091ea);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Label */
+.notice-admin-page label {
+  font-size: 1.2rem;
+  color: #b2ebf2;
+}
+
+/* Textarea */
+.notice-admin-page textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  outline: none;
+  resize: vertical;
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.1);
+  margin-top: 8px;
+}
+
+/* Submit Button */
+.notice-admin-page button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00e5ff, #0091ea);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 229, 255, 0.3);
+}
+
+.notice-admin-page button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(0, 229, 255, 0.4);
+}
+
+/* Flash Messages */
+.flash-messages {
+  margin-top: 30px;
+  padding: 0;
+  list-style: none;
+}
+
+.flash-messages li {
+  background: rgba(0, 229, 255, 0.1);
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-left: 5px solid #00e5ff;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+/* Flash message colors by category */
+.flash-messages .success {
+  border-left-color: #00e676;
+  color: #a5f2c2;
+}
+
+.flash-messages .error {
+  border-left-color: #ff1744;
+  color: #ff8a80;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .notice-admin-page {
+    padding: 25px;
+  }
+
+  .notice-admin-page h1 {
+    font-size: 1.7rem;
+  }
+
+  .notice-admin-page textarea {
+    font-size: 0.95rem;
+  }
+
+  .notice-admin-page button {
+    font-size: 1rem;
+  }
+}

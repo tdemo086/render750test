@@ -1,0 +1,117 @@
+
+
+/* Container */
+.oxychem-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  animation: fadeInUp 0.6s ease-in-out;
+  color: #e0f7fa;
+}
+
+/* Header */
+.oxychem-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  background-clip: text; 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+/* Tagline */
+.tagline {
+  text-align: center;
+  font-style: italic;
+  color: #b2ebf2;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+/* Paragraphs */
+.intro p, .belief p, .subscribe p, .profile p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Goals Section */
+.goals h3 {
+  color: #39c2cc;
+  margin-bottom: 10px;
+}
+
+.goals ul, .achievements ul {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.goals li, .achievements li {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  position: relative;
+  padding-left: 20px;
+}
+
+.goals li::before,
+.achievements li::before {
+  position: absolute;
+  left: 0;
+  color: #69f0ae;
+}
+
+/* Achievements */
+.achievements h4 {
+  margin-top: 30px;
+  color: #4fc3f7;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .oxychem-container {
+    padding: 20px;
+  }
+
+  .oxychem-container h1 {
+    font-size: 2rem;
+  }
+
+  .tagline, .goals li, .achievements li {
+    font-size: 1rem;
+  }
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.social-icons a {
+  font-size: 2.2rem;
+  color: #f0f0f0;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #21d2d8;
+}

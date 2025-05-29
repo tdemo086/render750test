@@ -1,0 +1,72 @@
+.playlist-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.playlist-title {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #555;
+  padding-bottom: 10px;
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.video-card {
+  background-color: #00ffd923;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.video-meta {
+  margin-bottom: 15px;
+}
+
+.video-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f0f0f0;
+}
+
+.video-link {
+  font-size: 14px;
+  color: #6cb2eb;
+  word-break: break-all;
+}
+
+.video-link:hover {
+  text-decoration: underline;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+
+.no-video-msg {
+  color: #ccc;
+  text-align: center;
+  margin-top: 40px;
+}
