@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='note.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Note{% endblock %}
+{% block content %}
+<h2>Chemistry Notes</h2>
+<div class="note-grid">
+  {% for note in notes %}
+  <div class="note-card">
+    <h3>{{ note.title }}</h3>
+    <a href="{{ note.link }}" target="_blank" class="open-button">Open</a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

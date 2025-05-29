@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='class.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Class{% endblock %}
+{% block content %}
+<h2>Video Resources</h2>
+<div class="video-grid">
+  {% for video in videos %}
+  <div class="video-card">
+    <h3>{{ video.title }}</h3>
+    <iframe width="300" height="180"
+            src="https://www.youtube.com/embed/{{ video.link | replace('https://youtu.be/', '') | replace('https://www.youtube.com/watch?v=', '') }}"
+            frameborder="0" allowfullscreen>
+    </iframe>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

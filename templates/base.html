@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/logo.png" type="image/png">
+    <title>{% block title %}OxyChem {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    {% block extra_css %} {% endblock %}
+</head>
+<body>
+
+
+<div class="nav">
+  <a href="/"><img src="https://i.postimg.cc/2ShVYL5q/oxychem-72p.png" alt="Logo" class="logo"></a>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="nav-links">
+    <a href="/class">Class</a>
+    <a href="/note">Note</a>
+    <a href="/exam">Exam</a>
+    <a href="/playlist-list">Playlist</a>
+    <a href="/routine">Routine</a>
+    <a href="/about">About-us</a>
+    <a href="/contact">Umcoming</a>
+    <a href="/members">OxyLab</a>
+    {% if session.get('admin') %}
+      <a href="/admin-panel"> Admin Panel</a>
+      <a href="/logout"> Logout</a>
+      <a href="/admin/notice">Notice Create</a>
+      <a href="/playlist-create"> Create Playlist</a>
+      <a href="/addmember">Add OxyLab</a>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Side Menu for Mobile -->
+<div class="side-menu" id="sideMenu">
+  <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+  <a href="/class">Class</a>
+  <a href="/note">Note</a>
+  <a href="/exam">Exam</a>
+  <a href="/playlist-list">Playlist</a>
+  <a href="/routine">Routine</a>
+  <a href="/about">About-us</a>
+  <a href="/contact">Umcoming</a>
+  <a href="/members">OxyLab</a>
+    {% if session.get('admin') %}
+      <a href="/admin-panel"> Admin Panel</a>
+      <a href="/logout"> Logout</a>
+      <a href="/admin/notice">Notice Create</a>
+      <a href="/playlist-create"> Create Playlist</a>
+      <a href="/addmember">Add OxyLab</a>
+    {% endif %}
+</div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+<footer class="footer">
+  Made by <span class="teslatech">TeslaTech</span>
+</footer>
+
+    <script>
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    if (menu.style.width === "250px") {
+      menu.style.width = "0";
+    } else {
+      menu.style.width = "250px";
+    }
+  }
+</script>
+</body>
+</html>

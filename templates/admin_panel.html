@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block title %}OxyChem - Admin Panel{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='panel.css') }}">
+<style>
+  .hidden { display: none; }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2>Upload Content or Create Exam</h2>
+
+<form method="POST" enctype="multipart/form-data" id="simpleForm" style="margin-top: 20px;">
+  <label for="uploadType">Select Type:</label>
+  <select id="uploadType" name="type" onchange="showForm()">
+    <option value="class">Class</option>
+    <option value="note">Note</option>
+    <option value="routine">Routine</option>
+    <option value="create_exam">Create Exam (detailed)</option>
+  </select><br><br>
+
+  <!-- Fields for class, note, exam -->
+  <div id="titleLinkFields">
+    <input type="text" name="title" placeholder="Title" required><br><br>
+    <input type="text" name="link" placeholder="Link" required><br><br>
+  </div>
+
+  <!-- Fields for routine -->
+  <div id="routineFields" class="hidden">
+    <input type="text" name="routine_title" placeholder="Routine Title"><br><br>
+    <input type="text" name="routine_chapter" placeholder="Chapter"><br><br>
+  </div>
+
+  <button type="submit">Upload</button>
+</form>
+
+<!-- Detailed Exam Creation Form -->
+<form method="POST" enctype="multipart/form-data" id="examForm" class="hidden" style="margin-top: 20px;">
+  <label>Exam Title:</label><br>
+  <input type="text" name="exam_title" required><br><br>
+
+  <label>Start Time (YYYY-MM-DD HH:MM):</label><br>
+  <input type="datetime-local" name="start_time" required><br><br>
+
+  <label>Exam Duration (in minutes):</label><br>
+  <input type="number" name="duration" min="1" required><br><br>
+
+  <h3>Questions</h3>
+  <div id="questions-container"></div>
+
+  <button type="button" onclick="addMCQ()">Add MCQ Question</button>
+  <button type="button" onclick="addCQ()">Add CQ Question</button><br><br>
+
+  <button type="submit">Create Exam</button>
+</form>
+
+<a href="/logout" class="logout-btn" style="display:block; margin-top: 40px;">Logout</a>
+
+<script>
+  function showForm() {
+    const select = document.getElementById('uploadType');
+    const simpleForm = document.getElementById('simpleForm');
+    const examForm = document.getElementById('examForm');
+    const titleLinkFields = document.getElementById('titleLinkFields');
+    const routineFields = document.getElementById('routineFields');
+
+    if (select.value === 'create_exam') {
+      simpleForm.classList.add('hidden');
+      examForm.classList.remove('hidden');
+      simpleForm.reset();
+    } else {
+      simpleForm.classList.remove('hidden');
+      examForm.classList.add('hidden');
+      examForm.reset();
+      document.getElementById('questions-container').innerHTML = '';
+      qCount = 0;
+
+      // Show/hide fields depending on type
+      if (select.value === 'routine') {
+        titleLinkFields.classList.add('hidden');
+        routineFields.classList.remove('hidden');
+
+        // Set required attributes accordingly
+        titleLinkFields.querySelectorAll('input').forEach(input => input.required = false);
+        routineFields.querySelectorAll('input').forEach(input => input.required = true);
+      } else {
+        routineFields.classList.add('hidden');
+        titleLinkFields.classList.remove('hidden');
+
+        titleLinkFields.querySelectorAll('input').forEach(input => input.required = true);
+        routineFields.querySelectorAll('input').forEach(input => input.required = false);
+      }
+    }
+  }
+
+  let qCount = 0;
+
+  function addMCQ() {
+    qCount++;
+    const container = document.getElementById('questions-container');
+    const html = `
+      <div class="question-block" data-type="mcq" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+        <label>MCQ Question ${qCount}:</label><br>
+        <input type="text" name="mcq_question_${qCount}" required style="width: 100%;"><br><br>
+
+        <label>Options:</label><br>
+        <input type="text" name="mcq_option1_${qCount}" placeholder="Option 1" required><br>
+        <input type="text" name="mcq_option2_${qCount}" placeholder="Option 2" required><br>
+        <input type="text" name="mcq_option3_${qCount}" placeholder="Option 3"><br>
+        <input type="text" name="mcq_option4_${qCount}" placeholder="Option 4"><br><br>
+
+        <label>Correct Option (1-4):</label><br>
+        <input type="number" name="mcq_correct_${qCount}" min="1" max="4" required><br><br>
+
+        <label>Optional Question Image:</label><br>
+        <input type="file" name="mcq_image_${qCount}" accept="image/*"><br><br>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', html);
+  }
+
+  function addCQ() {
+    qCount++;
+    const container = document.getElementById('questions-container');
+    const html = `
+      <div class="question-block" data-type="cq" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+        <label>CQ Question ${qCount}:</label><br>
+        <input type="text" name="cq_question_${qCount}" required style="width: 100%;"><br><br>
+
+        <label>Optional Question Image:</label><br>
+        <input type="file" name="cq_image_${qCount}" accept="image/*"><br><br>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', html);
+  }
+</script>
+
+{% endblock %}

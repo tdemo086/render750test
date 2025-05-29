@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='addmembers.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Add members{% endblock %}
+{% block content %}
+  <h1 style="text-align:center;">Add New Member</h1>
+
+  <form action="{{ url_for('add_member') }}" method="POST" class="form-container">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+
+    <label for="image_url">Photo URL:</label>
+    <input type="url" name="image_url" required>
+
+    <label for="qualification">Qualification:</label>
+    <input type="text" name="qualification" required>
+
+    <label for="contact">Contact Info (optional):</label>
+    <input type="text" name="contact">
+
+    <label for="role">Role:</label>
+    <select name="role" required>
+      <option value="ceo">CEO</option>
+      <option value="admin">Admin</option>
+      <option value="ambassador">Ambassador</option>
+      <option value="moderator">Moderator</option>
+    </select>
+
+    <button type="submit">Add Member</button>
+  </form>
+{% endblock %}

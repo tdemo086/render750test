@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='members.css') }}">
+{% endblock %}
+{% block title %}OxyChem - OxyLab{% endblock %}
+{% block content %}
+  <h1 style="text-align:center;">OxyLab Members</h1>
+  <p style="text-align:center; font-style: italic; color: #ccc;">A wing of OxyChem</p>
+
+  <!-- Admin Section -->
+  <section class="member-section">
+    <h2 style="text-align:center;"><i class="fas fa-user-shield"></i> Founder & CEO</h2>
+    <div class="container">
+      {% for helper in helpers if helper.role == 'ceo' %}
+        <div class="card" onclick="toggleContact(this)">
+          <img src="{{ helper.image_url }}" alt="{{ helper.name }}">
+          <h3>{{ helper.name }}</h3>
+          <p>{{ helper.qualification }}</p>
+          <div class="contact">
+            {{ helper.contact if helper.contact else 'No Contact' }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Moderator Section -->
+  <section class="member-section">
+    <h2 style="text-align:center;"><i class="fas fa-user-cog"></i> Admin</h2>
+    <div class="container">
+      {% for helper in helpers if helper.role == 'admin' %}
+        <div class="card" onclick="toggleContact(this)">
+          <img src="{{ helper.image_url }}" alt="{{ helper.name }}">
+          <h3>{{ helper.name }}</h3>
+          <p>{{ helper.qualification }}</p>
+          <div class="contact">
+            {{ helper.contact if helper.contact else 'No Contact' }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Ambassador Section -->
+  <section class="member-section">
+    <h2 style="text-align:center;"><i class="fas fa-users"></i> Ambassadors</h2>
+    <div class="container">
+      {% for helper in helpers if helper.role == 'ambassador' %}
+        <div class="card" onclick="toggleContact(this)">
+          <img src="{{ helper.image_url }}" alt="{{ helper.name }}">
+          <h3>{{ helper.name }}</h3>
+          <p>{{ helper.qualification }}</p>
+          <div class="contact">
+            {{ helper.contact if helper.contact else 'No Contact' }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Moderator Section -->
+  <section class="member-section">
+    <h2 style="text-align:center;"><i class="fas fa-users"></i> Moderators</h2>
+    <div class="container">
+      {% for helper in helpers if helper.role == 'moderator' %}
+        <div class="card" onclick="toggleContact(this)">
+          <img src="{{ helper.image_url }}" alt="{{ helper.name }}">
+          <h3>{{ helper.name }}</h3>
+          <p>{{ helper.qualification }}</p>
+          <div class="contact">
+            {{ helper.contact if helper.contact else 'No Contact' }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <script>
+    function toggleContact(card) {
+      const contact = card.querySelector('.contact');
+      contact.style.display = contact.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='playlist-list.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Playlist{% endblock %}
+{% block content %}
+<h2>All Playlists</h2>
+
+<div class="playlist-grid">
+    {% if playlists %}
+        {% for playlist in playlists %}
+            <div class="playlist-card">
+                <a href="{{ url_for('playlist_page', playlist_id=playlist['_id']) }}">
+                    <img class="playlist-thumb" src="{{ playlist.image or url_for('static', filename='default.jpg') }}" alt="{{ playlist.name }}">
+                    <div class="playlist-title">{{ playlist.name }}</div>
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-playlist">No playlists found.</p>
+    {% endif %}
+</div>
+{% endblock %}

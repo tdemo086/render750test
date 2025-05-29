@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='take.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Take exam{% endblock %}
+{% block content %}
+<div id="user-info-form">
+  <h2>Enter Your Information</h2>
+  <form id="infoForm" method="POST" action="" enctype="multipart/form-data">
+    <label>Name:</label><br>
+    <input type="text" name="name" id="userName" required><br><br>
+
+    <label>Phone Number:</label><br>
+    <input type="text" name="number" id="phoneNumber" placeholder="Phone Number" required>
+
+    <button type="submit">Start Exam</button>
+  </form>
+</div>
+
+<div id="exam-section" style="display: none;">
+  <h2>{{ exam.title }}</h2>
+  <div id="timer"></div>
+
+  <form method="POST" enctype="multipart/form-data" id="examForm">
+    <input type="hidden" name="name" id="hiddenUserName">
+    <input type="hidden" name="number" id="hiddenPhoneNumber">
+
+    {% for i, q in enumerate(exam.questions) %}
+      <div class="question">
+        <p><strong>Q{{ i+1 }}:</strong> {{ q.question }}</p>
+        {% if q.image %}
+          <img src="{{ q.image }}" alt="Question Image"><br>
+        {% endif %}
+
+        {% if q.type.lower() == 'mcq' %}
+          {% for j, option in enumerate(q.options) %}
+            <label class="option-label">
+              <input type="radio" name="answer_{{ i }}" value="{{ j+1 }}" required>
+              <span class="custom-radio"></span>
+              <span>{{ option }}</span>
+            </label>
+          {% endfor %}
+        {% elif q.type.lower() == 'cq' %}
+          <textarea name="answer_{{ i }}" placeholder="Write your answer here..." required></textarea><br>
+          <label>Upload image (optional):</label>
+          <input type="file" name="image_{{ i }}" accept="image/*"><br>
+        {% endif %}
+        <hr>
+      </div>
+    {% endfor %}
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  const infoForm = document.getElementById("infoForm");
+  const examSection = document.getElementById("exam-section");
+
+  infoForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("userName").value.trim();
+    const phone = document.getElementById("phoneNumber").value.trim();
+
+    if (name && phone) {
+      document.getElementById("hiddenUserName").value = name;
+      document.getElementById("hiddenPhoneNumber").value = phone;
+
+      document.getElementById("user-info-form").style.display = "none";
+      examSection.style.display = "block";
+      startTimer();
+    }
+  });
+
+  function startTimer() {
+    const durationMinutes = {{ duration | default(30) }};
+    const endTime = new Date().getTime() + durationMinutes * 60 * 1000;
+
+    function updateTimer() {
+      const now = new Date().getTime();
+      const distance = endTime - now;
+
+      if (distance <= 0) {
+        document.getElementById("timer").innerText = "Time's up!";
+        document.getElementById("examForm").submit();
+      } else {
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("timer").innerText = `Time Remaining: ${minutes}m ${seconds}s`;
+      }
+    }
+
+    updateTimer(); // initial call to avoid delay
+    setInterval(updateTimer, 1000);
+  }
+
+
+</script>
+
+{% endblock %}

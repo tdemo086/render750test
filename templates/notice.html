@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='notices.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Add Notice{% endblock %}
+{% block content %}
+<div class="notice-admin-page">
+  <h1>Update Notice Message</h1>
+
+  <form method="POST" action="{{ url_for('admin_notice') }}">
+    <label for="notice_message">Notice Message:</label><br>
+    <textarea id="notice_message" name="notice_message" rows="4" cols="50" required>{{ notice_message }}</textarea><br><br>
+    <button type="submit">Update Notice</button>
+  </form>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flash-messages">
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</div>
+{% endblock %}

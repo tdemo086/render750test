@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='playlist.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Playlist-view{% endblock %}
+{% block content %}
+<div class="playlist-container">
+  <h2 class="playlist-title">Playlist: {{ playlist.name }}</h2>
+
+  {% if playlist.videos %}
+    <div class="video-list">
+      {% for video in playlist.videos %}
+        {% set video_id = None %}
+        {% if 'youtube.com/watch' in video.link %}
+          {% set video_id = video.link.split('v=')[1].split('&')[0] %}
+        {% elif 'youtu.be/' in video.link %}
+          {% set video_id = video.link.split('youtu.be/')[1].split('?')[0] %}
+        {% endif %}
+
+        <div class="video-card">
+          <div class="video-meta">
+            <strong class="video-title">{{ video.title }}</strong><br>
+            <a class="video-link" href="{{ video.link }}" target="_blank">{{ video.link }}</a>
+          </div>
+          <div class="video-embed">
+            {% if video_id %}
+              <iframe
+                src="https://www.youtube.com/embed/{{ video_id }}"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"
+                width="100%"
+                height="315">
+              </iframe>
+            {% else %}
+              <p>Invalid YouTube URL, cannot embed.</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="no-video-msg">No videos in this playlist.</p>
+  {% endif %}
+</div>
+{% endblock %}

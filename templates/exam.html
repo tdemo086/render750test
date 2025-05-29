@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='exam.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Exam{% endblock %}
+{% block content %}
+<h2>Available Exams</h2>
+
+{% if videos|length == 0 %}
+  <p class="no-exams">No exams available at the moment.</p>
+{% else %}
+  <div class="exam-list">
+    {% for exam in videos %}
+      <div class="exam-item">
+        <h3>{{ exam.title }}</h3>
+        {% if exam.start_time %}
+          <p><strong>Starts at:</strong> {{ exam.start_time }}</p>
+        {% endif %}
+        <a href="/exam/{{ exam._id }}/start" class="start-btn">Start Now</a>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% endblock %}

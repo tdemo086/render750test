@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='routine.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Routine{% endblock %}
+{% block content %}
+<h2>Class Routine</h2>
+<div class="note-grid">
+  {% for routine in routines %}
+  <div class="note-card">
+    <h3>{{ routine.title }}</h3>
+    <p><strong>Chapter:</strong> {{ routine.chapter }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

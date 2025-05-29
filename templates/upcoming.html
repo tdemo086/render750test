@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='upcoming.css') }}">
+{% endblock %}
+{% block title %}OxyChem - Upcoming{% endblock %}
+{% block content %}
+<div class="oxychem-container">
+
+  {% if notice_messages %}
+  <h1><i class="fa-solid fa-bell"></i> Notices</h1>
+  <div class="notices-wrapper">
+    {% for notice in notice_messages %}
+      <div class="notice-card">
+        <p>{{ notice }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p class="no-notice">No notices available at this time.</p>
+  {% endif %}
+
+</div>
+{% endblock %}
